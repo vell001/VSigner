@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">VSigner</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="username">姓名</string>
+    <string name="username_hint">请输入真实姓名</string>
+    <string name="password">密码</string>
+    <string name="password_hint">请输入密码</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="confirm_password_hint">请确认密码</string>
+    <string name="email">常用邮箱</string>
+    <string name="email_hint">用于密码找回</string>
+    <string name="necessary">*</string>
+    <string name="necessary_notice">*表示必须填写</string>
+    
+    <string name="school">学校</string>
+    <string name="school_hint">你的学校名</string>
+    <string name="major">专业</string>
+    <string name="major_hint">你的所在专业名称</string>
+    <string name="student_id">学号</string>
+    <string name="student_id_hint">你的学号</string>
+    
+    <string name="register">注册</string>
+    
+    <string name="logo">logo</string>
+    
+    <string name="welcome_register">欢迎注册</string>
+    
+    <string name="phone_imsi">你的IMSI</string>
+    
+    <string name="register_notice">提醒：\n\t\t1.本软件是实名制签到，请如实填写信息，以免造成不必要的误会\n \t\t2.软件会自动绑定你的IMSI(手机卡识别码)，请使用自己的手机注册</string>
+    
+    <string name="add_avator">add_avator</string>
+    
+    <string name="tips">提示</string>
+    
+    <string name="cannot_get_phone_imsi_tips">无法读取IMSI(手机卡识别码)，请确认你的手机卡正确插入！</string>
+    <string name="exist">退出</string>
+</resources>
