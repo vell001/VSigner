@@ -32,6 +32,8 @@
     <color name="guide_color">#898989</color>
 
     <color name="common_bg">#fcfcfc</color>
+    
     <color name="logo">#00abee</color>
+    <color name="error_bg">#FF4500</color>
     
 </resources>

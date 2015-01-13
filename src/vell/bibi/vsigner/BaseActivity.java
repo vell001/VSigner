@@ -1,16 +1,18 @@
 package vell.bibi.vsigner;
 
 import vell.bibi.vsigner.config.Constants;
-import android.app.Activity;
+import vell.bibi.vsigner.model.User;
 import android.content.Context;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Window;
 import android.widget.Toast;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.BmobUser;
 
 /**
  * 基础活动类，所有活动都继承自此
@@ -18,11 +20,12 @@ import cn.bmob.v3.BmobInstallation;
  *
  * @date Jan 8, 2015
  */
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
 
 	protected Context mContext;
 	protected BmobInstallation mBmobInstallation;
 	protected String mInstallationId;
+	protected User mCurrentUser = null;
 	
 	protected int mScreenWidth;
 	protected int mScreenHeight;
@@ -47,7 +50,8 @@ public abstract class BaseActivity extends Activity {
 		mContext = this;
 		mBmobInstallation = BmobInstallation.getCurrentInstallation(this);
 		mInstallationId = BmobInstallation.getInstallationId(this);
-		
+		mCurrentUser = BmobUser.getCurrentUser(this, User.class);
+
 		setContentView();
 		initViews();
 		initListeners();

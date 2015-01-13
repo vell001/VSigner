@@ -19,7 +19,7 @@ import android.widget.TextView;
  *自定义对话框基类
  *支持：对话框全屏显示控制、title显示控制，一个button或两个
  */
-public abstract class DialogBase extends Dialog {
+public abstract class BaseDialog extends Dialog {
 	protected OnClickListener onSuccessListener;
 	protected Context mainContext;
 	protected OnClickListener onCancelListener;//提供给取消按钮
@@ -52,7 +52,7 @@ public abstract class DialogBase extends Dialog {
 	 * 构造函数
 	 * @param context 对象应该是Activity
 	 */
-	public DialogBase(Context context) {
+	public BaseDialog(Context context) {
 		super(context, R.style.alert);
 		this.mainContext = context;
 	}
@@ -145,8 +145,8 @@ public abstract class DialogBase extends Dialog {
 	protected OnDismissListener GetOnDismissListener() {
 		return new OnDismissListener(){
 			public void onDismiss(DialogInterface arg0) {
-				DialogBase.this.onDismiss();
-				DialogBase.this.setOnDismissListener(null);
+				BaseDialog.this.onDismiss();
+				BaseDialog.this.setOnDismissListener(null);
 				view = null;
 				mainContext = null;
 				positiveButton = null;
@@ -166,7 +166,7 @@ public abstract class DialogBase extends Dialog {
 		return new View.OnClickListener() {
 			public void onClick(View v) {
 				if(OnClickPositiveButton())
-					DialogBase.this.dismiss();
+					BaseDialog.this.dismiss();
 			}
 		};
 	}
@@ -179,7 +179,7 @@ public abstract class DialogBase extends Dialog {
 		return new View.OnClickListener() {
 			public void onClick(View v) {
 				OnClickNegativeButton();
-				DialogBase.this.dismiss();
+				BaseDialog.this.dismiss();
 			}
 		};
 	}

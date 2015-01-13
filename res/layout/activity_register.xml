@@ -51,7 +51,7 @@
                 android:paddingLeft="10dp"
                 android:textStyle="bold" />
         </LinearLayout>
-
+        
         <LinearLayout style="@style/Register_Input" >
 
             <TextView
@@ -72,7 +72,30 @@
             <EditText
                 android:id="@+id/et_username"
                 style="@style/Register_Edit"
-                android:hint="@string/username_hint" />
+                android:hint="@string/username_hint"/>
+        </LinearLayout>
+
+        <LinearLayout style="@style/Register_Input" >
+
+            <TextView
+                style="@style/Smile.TextView._Black"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:text="@string/realname"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/Smile.TextView._Black"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/necessary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_realname"
+                style="@style/Register_Edit"
+                android:hint="@string/realname_hint" />
         </LinearLayout>
 
         <LinearLayout style="@style/Register_Input" >
@@ -146,54 +169,6 @@
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress" />
         </LinearLayout>
-
-        <LinearLayout style="@style/Register_Input" >
-
-            <TextView
-                style="@style/Smile.TextView._Black"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:text="@string/school"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/et_school"
-                style="@style/Register_Edit"
-                android:hint="@string/school_hint" />
-        </LinearLayout>
-
-        <LinearLayout style="@style/Register_Input" >
-
-            <TextView
-                style="@style/Smile.TextView._Black"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:text="@string/major"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/et_major"
-                style="@style/Register_Edit"
-                android:hint="@string/major_hint" />
-        </LinearLayout>
-
-        <LinearLayout style="@style/Register_Input" >
-
-            <TextView
-                style="@style/Smile.TextView._Black"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:paddingLeft="10dp"
-                android:text="@string/student_id"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/et_student_id"
-                style="@style/Register_Edit"
-                android:hint="@string/student_id_hint" />
-        </LinearLayout>
         
         <TextView
             style="@style/Smile.TextView._Gray"
@@ -214,7 +189,8 @@
             android:background="@drawable/btn_login_selector"
             android:text="@string/register"
             android:textColor="@color/base_color_text_white"
-            android:textSize="@dimen/text_size_large" />
+            android:textSize="@dimen/text_size_large" 
+            android:onClick="btn_register_onclick"/>
 
     </LinearLayout>
 

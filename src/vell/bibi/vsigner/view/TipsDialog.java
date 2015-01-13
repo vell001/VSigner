@@ -5,14 +5,14 @@ import android.content.Context;
 /**
  * 提示对话框，有一个确认、一个返回按钮
  */
-public class DialogTips extends DialogBase {
+public class TipsDialog extends BaseDialog {
 	boolean hasNegative;
 	boolean hasTitle;
 	/**
 	 * 构造函数
 	 * @param context
 	 */
-	public DialogTips(Context context, String title,String message,String buttonText,boolean hasNegative,boolean hasTitle) {
+	public TipsDialog(Context context, String title,String message,String buttonText,boolean hasNegative,boolean hasTitle) {
 		super(context);
 		super.setMessage(message);
 		super.setNamePositiveButton(buttonText);
@@ -27,7 +27,7 @@ public class DialogTips extends DialogBase {
 	 * @param message
 	 * @param buttonText
 	 */
-	public DialogTips(Context context,String message,String buttonText) {
+	public TipsDialog(Context context,String message,String buttonText) {
 		super(context);
 		super.setMessage(message);
 		super.setNamePositiveButton(buttonText);
@@ -37,7 +37,7 @@ public class DialogTips extends DialogBase {
 		super.setCancel(false);
 	}
 	
-	public DialogTips(Context context, String message,String buttonText,String negetiveText,String title,boolean isCancel) {
+	public TipsDialog(Context context, String message,String buttonText,String negetiveText,String title,boolean isCancel) {
 		super(context);
 		super.setMessage(message);
 		super.setNamePositiveButton(buttonText);
