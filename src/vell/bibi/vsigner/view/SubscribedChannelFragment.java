@@ -13,4 +13,16 @@ public class SubscribedChannelFragment extends BaseFragment{
 		return inflater.inflate(R.layout.fragment_subscribed_channel, container, false);
 	}
 
+	@Override
+	public void initViews() {
+	}
+
+	@Override
+	public void initListeners() {
+	}
+
+	@Override
+	public void initData() {
+	}
+
 }

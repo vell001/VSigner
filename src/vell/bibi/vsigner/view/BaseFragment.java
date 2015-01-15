@@ -1,7 +1,48 @@
 package vell.bibi.vsigner.view;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
 
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
+	protected Context mContext;
+	protected LayoutInflater mInflater;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
+		
+		mContext = this.getActivity();
+		mInflater = LayoutInflater.from(getActivity());
+	}
+	@Override
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+		
+		initViews();
+		initListeners();
+		initData();
+	}
+	/**
+	 * 初始化布局文件中的控件
+	 */
+	public abstract void initViews();
+
+	/**
+	 * 初始化控件的监听
+	 */
+	public abstract void initListeners();
+	
+	/** 进行数据初始化
+	  * initData
+	  */
+	public abstract void initData();
+	
+	public View findViewById(int paramInt) {
+		return getView().findViewById(paramInt);
+	}
 }

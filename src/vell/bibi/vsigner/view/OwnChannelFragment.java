@@ -13,4 +13,16 @@ public class OwnChannelFragment extends BaseFragment{
 		return inflater.inflate(R.layout.fragment_own_channel, container, false);
 	}
 
+	@Override
+	public void initViews() {
+	}
+
+	@Override
+	public void initListeners() {
+	}
+
+	@Override
+	public void initData() {
+	}
+
 }

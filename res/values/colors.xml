@@ -36,4 +36,9 @@
     <color name="logo">#00abee</color>
     <color name="error_bg">#FF4500</color>
     
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#aaaaaa</color>
+    <color name="light_blue">#6593cb</color>
+    
 </resources>

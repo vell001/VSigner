@@ -14,5 +14,6 @@ public class Constants {
 	public final static String IMSI_KEY = "IMSI";
 	public final static int USERNAME_MIN_LENGTH = 6; // 用户名最小长度
 	public final static int PASSWORD_MIN_LENGTH = 6; // 密码最小长度
+	public final static long MESSAGE_REFRESH_PERIOD = 60000; // 刷新消息周期  一分钟
 	
 }

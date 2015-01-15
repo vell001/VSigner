@@ -1,9 +1,11 @@
 package vell.bibi.vsigner;
 
+import vell.bibi.vsigner.service.MessageService;
 import vell.bibi.vsigner.view.MessageFragment;
 import vell.bibi.vsigner.view.OwnChannelFragment;
 import vell.bibi.vsigner.view.SetFragment;
 import vell.bibi.vsigner.view.SubscribedChannelFragment;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -94,6 +96,9 @@ public class MainActivity extends BaseActivity {
 			.hide(mSubscribedChannelFragment)
 			.hide(mSetFragment)
 			.commit();
+		
+		// 启动MessageService
+		startService(new Intent(mContext, MessageService.class));
 	}
 
 	
