@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_channel_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/channel_not_active_bg"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:padding="4dp" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -24,9 +25,21 @@
             android:layout_width="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="@string/manager_name_format"
-            android:textSize="18sp" />
+            android:textSize="18sp" 
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/tv_channel_name"/>
+        
+        <TextView
+            android:id="@+id/tv_is_active"
+            style="@style/Smile.TextView._Gray"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/is_active"
+            android:textSize="18sp" 
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_channel_info"
@@ -35,7 +48,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:minLines="1"
-        android:maxLines="2"
         android:text="@string/default_text"
         android:textSize="16sp" >
     </TextView>
@@ -47,8 +59,8 @@
         <TextView
             android:id="@+id/tv_time"
             style="@style/Smile.TextView._Gray"
-            android:layout_marginTop="10dp"
             android:text="@string/default_number"
+            android:layout_centerVertical="true"
             android:textSize="12sp" >
         </TextView>
 
@@ -56,7 +68,6 @@
             android:id="@+id/tv_phone"
             style="@style/Smile.TextView._White"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
             android:background="@color/green"
             android:drawableLeft="@drawable/icon_phone"
             android:drawablePadding="5dp"

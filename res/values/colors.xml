@@ -42,4 +42,7 @@
     <color name="light_blue">#6593cb</color>
     <color name="green">#5cbe6c</color>
     
+    <color name="channel_is_active_bg">#FFFFE0</color>
+    <color name="channel_not_active_bg">#F0FFFF</color>
+    
 </resources>

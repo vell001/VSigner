@@ -1,5 +1,6 @@
 package vell.bibi.vsigner.view;
 
+import vell.bibi.vsigner.R;
 import android.content.Context;
 
 /**
@@ -21,7 +22,53 @@ public class TipsDialog extends BaseDialog {
 		super.setTitle(title);
 	}
 	
-	/**下线通知的对话框样式
+	public TipsDialog(Context context,String title,String message,String buttonText,String negetiveText,boolean isCancel) {
+		super(context);
+		super.setMessage(message);
+		super.setNamePositiveButton(buttonText);
+		this.hasNegative=false;
+		super.setNameNegativeButton(negetiveText);
+		this.hasTitle = true;
+		super.setTitle(title);
+		super.setCancel(isCancel);
+	}
+	/**
+	 * 默认title
+	 * @param context
+	 * @param message
+	 * @param buttonText
+	 * @param negetiveText
+	 * @param isCancel
+	 */
+	public TipsDialog(Context context,String message,String buttonText,String negetiveText,boolean isCancel) {
+		super(context);
+		super.setMessage(message);
+		super.setNamePositiveButton(buttonText);
+		this.hasNegative=false;
+		super.setNameNegativeButton(negetiveText);
+		this.hasTitle = true;
+		super.setTitle(context.getString(R.string.default_tips_title));
+		super.setCancel(isCancel);
+	}
+	/**
+	 * 默认title <br/>
+	 * 可以在区域外取消对话框
+	 * @param context
+	 * @param message
+	 * @param buttonText
+	 * @param negetiveText
+	 */
+	public TipsDialog(Context context,String message,String buttonText,String negetiveText) {
+		super(context);
+		super.setMessage(message);
+		super.setNamePositiveButton(buttonText);
+		this.hasNegative=false;
+		super.setNameNegativeButton(negetiveText);
+		this.hasTitle = true;
+		super.setTitle(context.getString(R.string.default_tips_title));
+		super.setCancel(true);
+	}
+	/**
 	 * @param context
 	 * @param title
 	 * @param message
@@ -33,19 +80,8 @@ public class TipsDialog extends BaseDialog {
 		super.setNamePositiveButton(buttonText);
 		this.hasNegative = false;
 		this.hasTitle = true;
-		super.setTitle("提示");
+		super.setTitle(context.getString(R.string.default_tips_title));
 		super.setCancel(false);
-	}
-	
-	public TipsDialog(Context context, String message,String buttonText,String negetiveText,String title,boolean isCancel) {
-		super(context);
-		super.setMessage(message);
-		super.setNamePositiveButton(buttonText);
-		this.hasNegative=false;
-		super.setNameNegativeButton(negetiveText);
-		this.hasTitle = true;
-		super.setTitle(title);
-		super.setCancel(isCancel);
 	}
 
 	/**

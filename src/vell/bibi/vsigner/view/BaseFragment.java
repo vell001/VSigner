@@ -1,6 +1,7 @@
 package vell.bibi.vsigner.view;
 
 import cn.bmob.v3.BmobUser;
+import vell.bibi.vsigner.BaseActivity;
 import vell.bibi.vsigner.model.User;
 import android.content.Context;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ public abstract class BaseFragment extends Fragment {
 	protected Context mContext;
 	protected LayoutInflater mInflater;
 	protected User mCurrentUser;
+	protected BaseActivity mBaseActivity;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public abstract class BaseFragment extends Fragment {
 		mContext = this.getActivity();
 		mCurrentUser = BmobUser.getCurrentUser(mContext, User.class);
 		mInflater = LayoutInflater.from(getActivity());
+		mBaseActivity = (BaseActivity) getActivity();
 	}
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {

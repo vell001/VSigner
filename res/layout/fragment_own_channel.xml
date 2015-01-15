@@ -44,17 +44,21 @@
     </LinearLayout>
     <!-- end of top bar -->
 
-    <vell.bibi.vsigner.view.RefreshableView
+    <vell.bibi.vsigner.view.pullable.PullToRefreshLayout
         android:id="@+id/rv_own_channel"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
         
-        <ListView
+        <include layout="@layout/refresh_head" />
+        
+        <vell.bibi.vsigner.view.pullable.PullableListView
             android:id="@+id/lv_own_channel"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:cacheColorHint="#00000000"
             android:scrollbars="none" />
-    </vell.bibi.vsigner.view.RefreshableView>
+        
+        <include layout="@layout/load_more" />
+    </vell.bibi.vsigner.view.pullable.PullToRefreshLayout>
 
 </LinearLayout>

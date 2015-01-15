@@ -8,7 +8,9 @@ import vell.bibi.vsigner.adapter.BaseAdapterHelper;
 import vell.bibi.vsigner.adapter.QuickAdapter;
 import vell.bibi.vsigner.config.Constants;
 import vell.bibi.vsigner.model.Channel;
-import vell.bibi.vsigner.view.RefreshableView.PullToRefreshListener;
+import vell.bibi.vsigner.view.pullable.PullToRefreshLayout;
+import vell.bibi.vsigner.view.pullable.PullToRefreshLayout.OnRefreshListener;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class OwnChannelFragment extends BaseFragment{
 	public static final int REFRESH_ID = 0020; // 刷新ID
@@ -32,7 +35,7 @@ public class OwnChannelFragment extends BaseFragment{
 	
 	private ListView mOwnChannelListView;
 	
-	private RefreshableView mRefreshableView;
+	private PullToRefreshLayout mPullToRefreshLayout;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +47,7 @@ public class OwnChannelFragment extends BaseFragment{
 	public void initViews() {
 		mCreateOwnChannelImageButton = (ImageButton) findViewById(R.id.ib_create_own_channel);
 		mOwnChannelListView = (ListView) findViewById(R.id.lv_own_channel);
-		mRefreshableView = (RefreshableView) findViewById(R.id.rv_own_channel);
+		mPullToRefreshLayout = (PullToRefreshLayout) findViewById(R.id.rv_own_channel);
 	}
 
 	@Override
@@ -56,12 +59,16 @@ public class OwnChannelFragment extends BaseFragment{
 			}
 		});
 		
-		mRefreshableView.setOnRefreshListener(new PullToRefreshListener() {
+		mPullToRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
 			@Override
-			public void onRefresh() {
+			public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
 				refreshData();
 			}
-		}, REFRESH_ID);
+			
+			@Override
+			public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+			}
+		});
 		
 		mOwnChannelListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -72,12 +79,13 @@ public class OwnChannelFragment extends BaseFragment{
 			}
 		});
 		
+		// 长按修改签到isActive属性
 		mOwnChannelListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int pos,
 					long id) {
-				System.out.println("onItemLongClick" + id);
+				changeIsActive(mOwnChannelAdapter.getItem(pos));
 				return true;
 			}
 		});
@@ -96,6 +104,13 @@ public class OwnChannelFragment extends BaseFragment{
 						.setText(R.id.tv_channel_info, channel.getInfo())
 						.setText(R.id.tv_phone, channel.getManager().getPhoneNumber())
 						.setText(R.id.tv_time, channel.getUpdatedAt());
+					if(channel.isActive()) { // 正在签到
+						helper.setBackgroundColor(R.id.ll_channel_item, getResources().getColor(R.color.channel_is_active_bg))
+							.setVisible(R.id.tv_is_active, true);
+					} else {
+						helper.setBackgroundColor(R.id.ll_channel_item, getResources().getColor(R.color.channel_not_active_bg))
+							.setVisible(R.id.tv_is_active, false);
+					}
 				}
 			};
 			mOwnChannelListView.setAdapter(mOwnChannelAdapter);
@@ -110,18 +125,59 @@ public class OwnChannelFragment extends BaseFragment{
 		channelQuery.include(Channel.MANAGER_KEY);
 		channelQuery.setLimit(Constants.QUERY_MAX_NUMBER);
 		channelQuery.order("-" + Constants.UPDATED_AT_KEY);
+		channelQuery.order("-" + Channel.IS_ACTIVE_KEY);
 		channelQuery.findObjects(mContext, new FindListener<Channel>() {
 			@Override
 			public void onSuccess(List<Channel> channels) {
 				mOwnChannelAdapter.clear();
 				mOwnChannelAdapter.addAll(channels);
-				mRefreshableView.finishRefreshing();
+				mPullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
 			}
 			
 			@Override
 			public void onError(int arg0, String msg) {
-				mRefreshableView.finishRefreshing();
+				mPullToRefreshLayout.refreshFinish(PullToRefreshLayout.FAIL);
 			}
 		});
+	}
+	
+	/**
+	 * 改变channel的isActive属性
+	 * @param channel
+	 */
+	private void changeIsActive(final Channel channel) {
+		String msg;
+		if (channel.isActive()) {
+			msg = String.format(getString(R.string.whether_close_sign_format), channel.getName());
+		} else {
+			msg = String.format(getString(R.string.whether_open_sign_format), channel.getName());
+		}
+		TipsDialog tipsDialog = new TipsDialog(mContext, msg, getString(R.string.ok_btn), getString(R.string.cancel_btn));
+		// 按下确认按钮
+		tipsDialog.SetOnSuccessListener(new android.content.DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface arg0, int arg1) {
+				if (channel.isActive()) {
+					channel.setActive(false);
+				} else {
+					channel.setActive(true);
+				}
+				mBaseActivity.showProgressDialog(getString(R.string.request_server));
+				channel.update(mContext, new UpdateListener() {
+					@Override
+					public void onSuccess() {
+						refreshData();
+						mBaseActivity.hideProgressDialog();
+					}
+					@Override
+					public void onFailure(int arg0, String msg) {
+						new TipsDialog(mContext, getString(R.string.server_update_error_tips) + ": " + msg, getString(R.string.ok_btn)).show();
+						mBaseActivity.hideProgressDialog();
+					}
+				});
+			}
+		});
+		
+		tipsDialog.show();
 	}
 }

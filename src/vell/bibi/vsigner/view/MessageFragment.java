@@ -1,7 +1,8 @@
 package vell.bibi.vsigner.view;
 
 import vell.bibi.vsigner.R;
-import vell.bibi.vsigner.view.RefreshableView.PullToRefreshListener;
+import vell.bibi.vsigner.view.pullable.PullToRefreshLayout;
+import vell.bibi.vsigner.view.pullable.PullToRefreshLayout.OnRefreshListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ public class MessageFragment extends BaseFragment{
 
 	public static final int REFRESH_ID = 0010; // 刷新ID
 	
-	private RefreshableView mRefreshableView;
+	private PullToRefreshLayout mPullToRefreshLayout;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -21,22 +22,21 @@ public class MessageFragment extends BaseFragment{
 
 	@Override
 	public void initViews() {
-		mRefreshableView = (RefreshableView) findViewById(R.id.rv_message);
+		mPullToRefreshLayout = (PullToRefreshLayout) findViewById(R.id.rv_message);
 	}
 
 	@Override
 	public void initListeners() {
-		mRefreshableView.setOnRefreshListener(new PullToRefreshListener() {
+		mPullToRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+			
 			@Override
-			public void onRefresh() {
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				mRefreshableView.finishRefreshing();
+			public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
 			}
-		}, REFRESH_ID);
+			
+			@Override
+			public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+			}
+		});
 	}
 
 	@Override
