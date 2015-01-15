@@ -16,6 +16,9 @@
     <string name="email">常用邮箱</string>
     <string name="email_hint">用于密码找回</string>
     <string name="email_format_error">邮箱格式不正确</string>
+    <string name="phone">联系电话</string>
+    <string name="phone_hint">请输入常用电话</string>
+    <string name="phone_format_error">电话格式不正确</string>
     <string name="necessary">*</string>
     <string name="necessary_notice">*表示必须填写</string>
     
@@ -34,7 +37,7 @@
     
     <string name="phone_imsi">你的IMSI</string>
     
-    <string name="register_notice">提醒：\n\t\t1.本软件是实名制签到，请如实填写信息，以免造成不必要的误会\n \t\t2.软件会自动绑定你的IMSI(手机卡识别码)，请使用自己的手机注册</string>
+    <string name="register_notice">提醒：\n\t\t1.本软件是实名制签到，请如实填写信息，以免造成不必要的误会\n \t\t2.软件会自动绑定你的IMSI(手机卡识别码)，请使用自己的手机注册\n \t\t3.电话信息用于联系签到，请如实填写</string>
     
     <string name="add_avator">add_avator</string>
     
@@ -56,7 +59,7 @@
     <string name="register_success">注册成功</string>
     <string name="user_info_update_success">用户信息更新成功</string>
     <string name="user_info_update_error">用户信息更新失败</string>
-    <string name="main_tab_recent">签到通知</string>
+    <string name="main_tab_message">签到通知</string>
     <string name="main_tab_own_channel">你的频道</string>
     <string name="main_tab_subscribed_channel">订阅频道</string>
     <string name="mian_tab_set">设置</string>
@@ -65,7 +68,6 @@
     <string name="set_voice">声音提醒</string>
     <string name="set_vibrate">震动提醒</string>
     <string name="logout">注销登录</string>
-    <string name="top_bar_message_text">签到消息</string>
     
     <string name="pull_to_refresh">下拉可以刷新</string>  
     <string name="release_to_refresh">释放立即刷新</string>  
@@ -74,4 +76,23 @@
     <string name="updated_at">上次更新于%1$s前</string>  
     <string name="updated_just_now">刚刚更新</string>  
     <string name="time_error">时间有问题</string>  
+    
+    <string name="create_new_channel">新频道</string>  
+    <string name="manager">管理员</string>  
+    <string name="channel_name">频道名</string>  
+    <string name="channel_name_hint">请输入唯一的频道名</string>  
+    <string name="channel_info">描述信息</string>  
+    <string name="channel_info_hint">请输入这个频道的描述信息</string>
+    <string name="create_new_channel_notice">提醒：\n\t\t1.频道名称不能重复\n \t\t2.请认真填写频道描述信息</string>
+    <string name="create">创建</string>
+    <string name="create_error">创建出错</string>
+    <string name="create_success">创建成功</string>
+    <string name="request_server">正在请求服务器</string>
+    <string name="channel_exist">频道已存在，请输入唯一的频道名</string>
+    <string name="default_number">12138</string>
+    <string name="default_text">管理员很懒，啥都没填写</string>
+    
+    <string name="manager_name_format">%1$s [%2$s]</string>
+    
+    <string name="detail">详细信息</string>
 </resources>

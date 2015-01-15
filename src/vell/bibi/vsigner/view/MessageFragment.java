@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 
 public class MessageFragment extends BaseFragment{
 
+	public static final int REFRESH_ID = 0010; // 刷新ID
+	
 	private RefreshableView mRefreshableView;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -18,7 +21,7 @@ public class MessageFragment extends BaseFragment{
 
 	@Override
 	public void initViews() {
-		mRefreshableView = (RefreshableView) findViewById(R.id.refreshable_view);
+		mRefreshableView = (RefreshableView) findViewById(R.id.rv_message);
 	}
 
 	@Override
@@ -33,7 +36,7 @@ public class MessageFragment extends BaseFragment{
 				}
 				mRefreshableView.finishRefreshing();
 			}
-		}, mRefreshableView.getId());
+		}, REFRESH_ID);
 	}
 
 	@Override

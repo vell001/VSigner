@@ -69,6 +69,7 @@
            </intent-filter>
         </receiver>
         <service android:name=".service.MessageService"></service>
+        <activity android:name="CreateOwnChannelActivity"></activity>
         
     </application>
 

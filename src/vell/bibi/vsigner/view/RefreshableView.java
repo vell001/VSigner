@@ -195,7 +195,7 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
         if (changed && !loadOnce) {  
             hideHeaderHeight = -header.getHeight();  
             headerLayoutParams = (MarginLayoutParams) header.getLayoutParams();  
-            headerLayoutParams.topMargin = hideHeaderHeight;  
+            headerLayoutParams.topMargin = hideHeaderHeight;
             listView = (ListView) getChildAt(1);  
             listView.setOnTouchListener(this);  
             loadOnce = true;  
@@ -271,17 +271,19 @@ public class RefreshableView extends LinearLayout implements OnTouchListener {
      */  
     public void setOnRefreshListener(PullToRefreshListener listener, int id) {  
         mListener = listener;  
-        mId = id;  
+        mId = id;
     }  
   
     /** 
      * 当所有的刷新逻辑完成后，记录调用一下，否则你的ListView将一直处于正在刷新状态。 
      */  
     public void finishRefreshing() {  
-        currentStatus = STATUS_REFRESH_FINISHED;  
-        preferences.edit().putLong(UPDATED_AT + mId, System.currentTimeMillis()).commit();  
-        new HideHeaderTask().execute();  
-    }  
+    	if(currentStatus != STATUS_REFRESH_FINISHED) {
+    		currentStatus = STATUS_REFRESH_FINISHED;  
+            preferences.edit().putLong(UPDATED_AT + mId, System.currentTimeMillis()).commit();  
+            new HideHeaderTask().execute();  
+    	}
+    }
   
     /** 
      * 根据当前ListView的滚动状态来设定 {@link #ableToPull} 

@@ -13,7 +13,14 @@ public class User extends BmobUser {
 	private String info; // 描述信息
 	private String avatar; // 头像
 	private String IMSI; // 手机卡唯一识别
+	private String phoneNumber; // 电话号码
 	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	private BmobRelation channels;
 	
 	public BmobRelation getChannels() {

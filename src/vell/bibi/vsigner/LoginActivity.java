@@ -44,12 +44,14 @@ public class LoginActivity extends BaseActivity {
 	 * @param v
 	 */
 	public void btn_login_onclick(View v) {
+		showProgressDialog(getString(R.string.request_server));
 		User user = new User();
 		user.setUsername(mUsernameTextView.getText().toString());
 		user.setPassword(mPasswordEditText.getText().toString());
 		user.login(mContext, new SaveListener() {
 			@Override
 			public void onSuccess() { // 登录成功
+				hideProgressDialog();
 				Intent intent = new Intent(mContext, MainActivity.class);
 				startActivity(intent);
 				finish();
@@ -57,6 +59,7 @@ public class LoginActivity extends BaseActivity {
 			
 			@Override
 			public void onFailure(int code, String msg) {
+				hideProgressDialog();
 				TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.login_error_tips) + ": " + msg, getString(R.string.ok_btn));
 				dialogTips.show();
 			}

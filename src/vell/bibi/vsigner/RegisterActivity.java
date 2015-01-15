@@ -33,6 +33,7 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 	private final static int PASSWORD_ERROR = 0300;
 	private final static int CONFIRM_PASSWORD_ERROR = 0400;
 	private final static int EMAIL_ERROR = 0500;
+	private final static int PHONE_ERROR = 0600;
 
 	private TextView mPhoneIMSITextView;
 	
@@ -41,6 +42,7 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 	private EditText mPasswordEditText;
 	private EditText mConfirmPasswordEditText;
 	private EditText mEmailEditText;
+	private EditText mPhoneEditText;
 	
 	private User mTempUser = new User();
 	
@@ -60,6 +62,7 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 		mPasswordEditText = (EditText) findViewById(R.id.et_password);
 		mConfirmPasswordEditText = (EditText) findViewById(R.id.et_confirm_password);
 		mEmailEditText = (EditText) findViewById(R.id.et_email);
+		mPhoneEditText = (EditText) findViewById(R.id.et_phone);
 	}
 
 	@Override
@@ -69,6 +72,7 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 		mPasswordEditText.setOnFocusChangeListener(this);
 		mConfirmPasswordEditText.setOnFocusChangeListener(this);
 		mEmailEditText.setOnFocusChangeListener(this);
+		mPhoneEditText.setOnFocusChangeListener(this);
 	}
 
 	@Override
@@ -131,7 +135,16 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 					mErrorMsgMap.remove(EMAIL_ERROR);
 				}
 				break;
-	
+			case R.id.et_phone:
+				text = mPhoneEditText.getText().toString().trim();
+				if(!StrUtil.isPhone(text)) {
+					String errorMsg = getString(R.string.phone_format_error);
+					mErrorMsgMap.put(PHONE_ERROR, errorMsg);
+					ShowToast(errorMsg);
+				} else {
+					mErrorMsgMap.remove(PHONE_ERROR);
+				}
+				break;
 			default:
 				break;
 			}
@@ -139,12 +152,12 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 	}
 	
 	public void btn_register_onclick(View view) {
-		mTempUser.setIMSI(mPhoneIMSITextView.getText().toString());
-		mTempUser.setUsername(mUsernameEditText.getText().toString());
-		mTempUser.setRealname(mRealnameEditText.getText().toString());
-		mTempUser.setPassword(mPasswordEditText.getText().toString());
-		mTempUser.setEmail(mEmailEditText.getText().toString());
-		
+		mTempUser.setIMSI(mPhoneIMSITextView.getText().toString().trim());
+		mTempUser.setUsername(mUsernameEditText.getText().toString().trim());
+		mTempUser.setRealname(mRealnameEditText.getText().toString().trim());
+		mTempUser.setPassword(mPasswordEditText.getText().toString().trim());
+		mTempUser.setEmail(mEmailEditText.getText().toString().trim());
+		mTempUser.setPhoneNumber(mPhoneEditText.getText().toString().trim());
 		String errorMsg = "";
 		
 		if(!mTempUser.isComplete()) { // 注册信息不完整
@@ -159,9 +172,12 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 			TipsDialog dialogTips = new TipsDialog(mContext, errorMsg, getString(R.string.ok_btn));
 			dialogTips.show();
 		} else { // 注册
+			showProgressDialog(getString(R.string.request_server));
+			
 			mTempUser.signUp(this, new SaveListener() {
 			    @Override
 			    public void onSuccess() { // 注册成功
+			    	hideProgressDialog();
 			    	TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.register_success), getString(R.string.ok_btn));
 					dialogTips.SetOnDismissListener(new OnDismissListener() {
 						@Override
@@ -175,11 +191,10 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 			    }
 			    @Override
 			    public void onFailure(int code, String msg) { // 注册失败
-			    	TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.register_error) + ": " + msg, getString(R.string.ok_btn));
-					dialogTips.show();
+			    	hideProgressDialog();
+			    	new TipsDialog(mContext, getString(R.string.register_error) + ": " + msg, getString(R.string.ok_btn)).show();
 			    }
 			});
 		}
-		
 	}
 }

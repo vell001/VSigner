@@ -2,7 +2,10 @@ package vell.bibi.vsigner;
 
 import vell.bibi.vsigner.config.Constants;
 import vell.bibi.vsigner.model.User;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -31,6 +34,8 @@ public abstract class BaseActivity extends FragmentActivity {
 	protected int mScreenHeight;
 	
 	public static final String TAG = "vsigner";
+	
+	protected ProgressDialog mProgressDialog = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -107,4 +112,30 @@ public abstract class BaseActivity extends FragmentActivity {
 		return (int) (scale*dipValue+0.5f);		
 	}
 	
+	public void showProgressDialog(String message, boolean canceledOnTouchOutide){
+		if(mProgressDialog == null) {
+			mProgressDialog = new ProgressDialog(mContext);
+			mProgressDialog.setOnDismissListener(new OnDismissListener() {
+				@Override
+				public void onDismiss(DialogInterface arg0) {
+					mProgressDialog = null;
+				}
+			});
+		}
+		mProgressDialog.setMessage(message);
+		mProgressDialog.setCanceledOnTouchOutside(canceledOnTouchOutide);
+		mProgressDialog.show();
+	}
+	
+	public void showProgressDialog(String message) {
+		showProgressDialog(message, false);
+	}
+	
+	public void setProgressToDialog(int value) {
+		mProgressDialog.setProgress(value);
+	}
+	
+	public void hideProgressDialog() {
+		mProgressDialog.hide();
+	}
 }

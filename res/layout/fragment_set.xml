@@ -5,6 +5,24 @@
     android:layout_height="match_parent"
     android:background="@color/theme_bg_color"
     android:orientation="vertical" >
+    
+    <LinearLayout
+        android:id="@+id/top_bar_message"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_action_bar_height"
+        android:background="@drawable/top_bar"
+        android:gravity="right"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="@string/mian_tab_set"
+            style="@style/TopBarText"/>
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/layout_info"
