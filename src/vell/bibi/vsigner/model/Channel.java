@@ -1,7 +1,9 @@
 package vell.bibi.vsigner.model;
 
+import java.util.Date;
+
 import cn.bmob.v3.BmobObject;
-import cn.bmob.v3.datatype.BmobRelation;
+import cn.bmob.v3.datatype.BmobDate;
 
 public class Channel extends BmobObject {
 	private static final long serialVersionUID = 700371249133583521L;
@@ -9,16 +11,20 @@ public class Channel extends BmobObject {
 	public final static String NAME_KEY = "name";
 	public final static String MANAGER_KEY = "manager";
 	public final static String IS_ACTIVE_KEY = "isActive";
-	
-	public final static String SUBSCRIBERS_KEY = "subscribers";
+	public final static String INFO_KEY = "info";
 	
 	private String name;
 	private String info;
 	private User manager; // 频道创建者
 	private boolean isActive = false; // 是否真正进行签到
+	private BmobDate startSignDate;
 	
-	private BmobRelation subscribers;
-	
+	public BmobDate getStartSignDate() {
+		return startSignDate;
+	}
+	public void setStartSignDate(BmobDate startSignDate) {
+		this.startSignDate = startSignDate;
+	}
 	public String getName() {
 		return name;
 	}
@@ -29,6 +35,9 @@ public class Channel extends BmobObject {
 		return isActive;
 	}
 	public void setActive(boolean isActive) {
+		if(isActive) { // 设置开始签到时间
+			setStartSignDate(new BmobDate(new Date(System.currentTimeMillis()))); 
+		}
 		this.isActive = isActive;
 	}
 	public String getInfo() {
@@ -43,10 +52,13 @@ public class Channel extends BmobObject {
 	public void setManager(User manager) {
 		this.manager = manager;
 	}
-	public BmobRelation getSubscribers() {
-		return subscribers;
-	}
-	public void setSubscribers(BmobRelation subscribers) {
-		this.subscribers = subscribers;
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Channel) {
+			Channel channel = (Channel) o;
+			return channel.getObjectId().equals(this.getObjectId());
+		} else {
+			return false;
+		}
 	}
 }

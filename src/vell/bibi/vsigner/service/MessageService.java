@@ -4,12 +4,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import vell.bibi.vsigner.config.Constants;
-import vell.bibi.vsigner.model.Channel;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
-import cn.bmob.v3.BmobQuery;
-import cn.bmob.v3.listener.CountListener;
 
 /**
  * 定时向服务器请求数据
@@ -69,26 +66,6 @@ public class MessageService extends BaseService {
 	}
 	
 	private void checkNewSignRequest() {
-		BmobQuery<Channel> channelQuery = new BmobQuery<Channel>();
-		channelQuery.addWhereContains(Channel.SUBSCRIBERS_KEY, mCurrentUser.getObjectId());
-		channelQuery.addWhereEqualTo(Channel.IS_ACTIVE_KEY, true);
-		
-		channelQuery.count(mContext, Channel.class, new CountListener() {
-			@Override
-			public void onSuccess(int count) {
-				if (count != 0) {
-					Intent intent = new Intent();
-					intent.putExtra(NEW_SIGN_REQUEST_COUNT_EXTRA, count);
-					intent.setAction(NEW_SIGN_REQUEST_ACTION);
-					mContext.sendBroadcast(intent);
-				}
-			}
-			
-			@Override
-			public void onFailure(int arg0, String arg1) {
-				Log.i("vsigner", arg1);
-			}
-		});
 	}
 
 }

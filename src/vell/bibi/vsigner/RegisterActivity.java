@@ -169,7 +169,7 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 		}
 		
 		if(!StrUtil.isEmpty(errorMsg)) { // 出错了
-			TipsDialog dialogTips = new TipsDialog(mContext, errorMsg, getString(R.string.ok_btn));
+			TipsDialog dialogTips = new TipsDialog(mContext, errorMsg, getString(R.string.ok));
 			dialogTips.show();
 		} else { // 注册
 			showProgressDialog(getString(R.string.request_server));
@@ -178,7 +178,7 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 			    @Override
 			    public void onSuccess() { // 注册成功
 			    	hideProgressDialog();
-			    	TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.register_success), getString(R.string.ok_btn));
+			    	TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.register_success), getString(R.string.ok));
 					dialogTips.SetOnDismissListener(new OnDismissListener() {
 						@Override
 						public void onDismiss(DialogInterface arg0) {
@@ -192,7 +192,7 @@ public class RegisterActivity extends BaseActivity implements OnFocusChangeListe
 			    @Override
 			    public void onFailure(int code, String msg) { // 注册失败
 			    	hideProgressDialog();
-			    	new TipsDialog(mContext, getString(R.string.register_error) + ": " + msg, getString(R.string.ok_btn)).show();
+			    	new TipsDialog(mContext, getString(R.string.register_error) + ": " + msg, getString(R.string.ok)).show();
 			    }
 			});
 		}

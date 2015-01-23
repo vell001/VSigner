@@ -81,7 +81,7 @@ public class CreateOwnChannelActivity extends BaseActivity implements OnFocusCha
 						@Override
 						public void onSuccess() {
 							hideProgressDialog();
-							TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.create_success), getString(R.string.ok_btn));
+							TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.create_success), getString(R.string.ok));
 							dialogTips.SetOnDismissListener(new OnDismissListener() {
 								@Override
 								public void onDismiss(DialogInterface arg0) {
@@ -94,19 +94,19 @@ public class CreateOwnChannelActivity extends BaseActivity implements OnFocusCha
 						@Override
 						public void onFailure(int code, String msg) {
 							hideProgressDialog();
-							new TipsDialog(mContext, getString(R.string.create_error) + ": " + msg, getString(R.string.ok_btn)).show();
+							new TipsDialog(mContext, getString(R.string.create_error) + ": " + msg, getString(R.string.ok)).show();
 						}
 					});
 				} else { // 频道存在
 					hideProgressDialog();
-					new TipsDialog(mContext, getString(R.string.channel_exist), getString(R.string.ok_btn)).show();
+					new TipsDialog(mContext, getString(R.string.channel_exist), getString(R.string.ok)).show();
 				}
 			}
 			
 			@Override
 			public void onError(int code, String msg) {
 				hideProgressDialog();
-				new TipsDialog(mContext, getString(R.string.create_error) + ": " + msg, getString(R.string.ok_btn)).show();
+				new TipsDialog(mContext, getString(R.string.create_error) + ": " + msg, getString(R.string.ok)).show();
 			}
 		});
 	}
@@ -131,5 +131,9 @@ public class CreateOwnChannelActivity extends BaseActivity implements OnFocusCha
 				break;
 			}
 		}
+	}
+	
+	public void btn_cancel_onclick(View v) {
+		finish();
 	}
 }

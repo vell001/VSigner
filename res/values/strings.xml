@@ -47,10 +47,11 @@
     <string name="cannot_get_phone_imsi_tips">无法读取IMSI(手机卡识别码)，请确认你的手机卡正确插入！</string>
     <string name="server_query_tips">连接服务器中，请耐心等待</string>
     <string name="server_query_error_tips">服务器查找出错</string>
-    <string name="server_update_error_tips">服务器修改出错</string>
+    <string name="server_update_error_tips">服务器更新出错</string>
+    <string name="server_update_success_tips">服务器更新成功</string>
     <string name="exist">退出</string>
-    <string name="ok_btn">确定</string>
-    <string name="cancel_btn">取消</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
     <string name="account">账号</string>
     <string name="login">登录</string>
     <string name="login_error_tips">登录出错</string>
@@ -93,6 +94,8 @@
     <string name="create">创建</string>
     <string name="create_error">创建出错</string>
     <string name="create_success">创建成功</string>
+    <string name="save_error">创建出错</string>
+    <string name="save_success">创建成功</string>
     <string name="request_server">正在请求服务器</string>
     <string name="channel_exist">频道已存在，请输入唯一的频道名</string>
     <string name="default_number">12138</string>
@@ -103,4 +106,29 @@
     <string name="is_active">签到中</string>
     <string name="whether_close_sign_format">是否关闭《%1$s》签到</string>
     <string name="whether_open_sign_format">是否开启《%1$s》签到</string>
+    
+    <string name="channel_detail">频道详情</string>
+    <string name="open_channel">开启签到</string>
+    <string name="close_channel">正在签到(点击关闭)</string>
+    <string name="show_signer">查看签到列表</string>
+    <string name="delete_channel">删除频道</string>
+    <string name="param_error">参数错误</string>
+    <string name="confirm_delete">确定要删除？</string>
+    
+    <string name="location_error">定位错误</string>
+    <string name="locating">定位中</string>
+    <string name="latitude">维度</string>
+    <string name="lontitude">经度</string>
+    <string name="address">地址</string>
+    <string name="sign">签到</string>
+    <string name="refresh_location">刷新地址</string>
+    <string name="refresh_time_format">更新时间: %1$s</string>
+    <string name="sign_success">签到成功</string>
+    <string name="already_signed">已经签到过了，不用重复签到</string>
+    <string name="channel_is_not_active">频道暂时没有开始签到</string>
+    <string name="search_hint">搜索</string>
+    <string name="subscribe_channel">订阅频道</string>
+    <string name="already_subscribed">已订阅(点击取消订阅)</string>
+    <string name="subscribe_success">订阅成功</string>
+    <string name="unsubscribe_success">成功取消订阅</string>
 </resources>

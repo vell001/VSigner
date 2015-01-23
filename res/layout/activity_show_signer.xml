@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    tools:ignore="UselessParent" >
 
     <!-- top bar -->
 
     <LinearLayout
-        android:id="@+id/top_bar_message"
+        android:id="@+id/ll_top_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/base_action_bar_height"
         android:background="@drawable/top_bar"
+        android:baselineAligned="false"
         android:gravity="right"
         android:orientation="horizontal" >
 
@@ -22,43 +25,30 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/tv_top_bar_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/main_tab_subscribed_channel"
+                android:text="@string/main_tab_own_channel"
                 android:textColor="#ffffff"
                 android:textSize="24sp" />
         </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/ib_subscribe_channel"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_margin="6dp"
-            android:background="#00000000"
-            android:contentDescription="@string/app_name"
-            android:focusable="false"
-            android:scaleType="centerInside"
-            android:src="@drawable/top_bar_add_bg_selector" />
     </LinearLayout>
     <!-- end of top bar -->
 
     <vell.bibi.vsigner.view.pullable.PullToRefreshLayout
-        android:id="@+id/ptrl_subscribed_channel"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
-        
+
         <include layout="@layout/refresh_head" />
-        
+
         <vell.bibi.vsigner.view.pullable.PullableListView
-            android:id="@+id/lv_subscribed_channel"
+            android:id="@+id/lv_signer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:cacheColorHint="#00000000"
             android:scrollbars="none" />
-        
+
         <include layout="@layout/load_more" />
     </vell.bibi.vsigner.view.pullable.PullToRefreshLayout>
 

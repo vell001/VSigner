@@ -45,7 +45,7 @@
     <!-- end of top bar -->
 
     <vell.bibi.vsigner.view.pullable.PullToRefreshLayout
-        android:id="@+id/rv_own_channel"
+        android:id="@+id/ptrl_own_channel"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
         

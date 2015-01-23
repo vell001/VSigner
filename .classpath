@@ -7,5 +7,7 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="lib" path="libs/BmobSDK_V3.2.8_0105.jar"/>
 	<classpathentry kind="lib" path="libs/BmobPush_V0.5beta_1027.jar"/>
+	<classpathentry kind="lib" path="libs/baidumapapi_v3_2_0.jar"/>
+	<classpathentry kind="lib" path="libs/locSDK_5.01.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

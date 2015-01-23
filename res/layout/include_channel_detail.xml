@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/login_logo"
+        android:drawablePadding="20sp"
+        android:gravity="center_vertical"
+        android:text="@string/channel_detail"
+        android:textColor="@color/logo"
+        android:textSize="30sp"
+        android:textStyle="bold" >
+    </TextView>
+
+    <LinearLayout style="@style/Register_Input" >
+
+        <TextView
+            style="@style/Smile.TextView._Black"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/channel_name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_channel_name"
+            style="@style/Register_Edit"
+            android:gravity="center_vertical"
+            android:hint="@string/default_text" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/Register_Input" >
+
+        <TextView
+            style="@style/Smile.TextView._Black"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/manager"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_manager_name"
+            style="@style/Smile.TextView._Gray"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48.0dip"
+        android:layout_marginLeft="@dimen/register_margin"
+        android:layout_marginRight="@dimen/register_margin"
+        android:layout_marginTop="@dimen/register_margin"
+        android:background="@drawable/base_edit_input"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/Smile.TextView._Black"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/channel_info"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_channel_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/register_margin"
+        android:layout_marginRight="@dimen/register_margin"
+        android:background="@drawable/base_edit_input"
+        android:hint="@string/default_text"
+        android:padding="@dimen/register_margin" />
+
+</LinearLayout>

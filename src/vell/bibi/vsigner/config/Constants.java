@@ -19,4 +19,11 @@ public class Constants {
 	public final static int QUERY_MAX_NUMBER = 300; // 单次最大查询数
 	
 	public final static String UPDATED_AT_KEY = "updatedAt";
+
+	public final static String CHANNEL_KEY = "channel";
+	
+	public final static int FLING_MIN_DISTANCE = 50;   
+    public final static int FLING_MIN_VELOCITY = 0;
+    
+    public static final int DOUBLE_CLICK_TIME = 250; // 双击间隔时间
 }

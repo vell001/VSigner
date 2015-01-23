@@ -82,7 +82,6 @@ public abstract class BaseActivity extends FragmentActivity {
 	  */
 	public abstract void initData();
 	Toast mToast;
-
 	public void ShowToast(String text) {
 		if (!TextUtils.isEmpty(text)) {
 			if (mToast == null) {
@@ -136,6 +135,8 @@ public abstract class BaseActivity extends FragmentActivity {
 	}
 	
 	public void hideProgressDialog() {
-		mProgressDialog.hide();
+		if(mProgressDialog.isShowing()) {
+			mProgressDialog.hide();
+		}
 	}
 }

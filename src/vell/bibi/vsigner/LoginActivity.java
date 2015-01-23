@@ -60,7 +60,7 @@ public class LoginActivity extends BaseActivity {
 			@Override
 			public void onFailure(int code, String msg) {
 				hideProgressDialog();
-				TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.login_error_tips) + ": " + msg, getString(R.string.ok_btn));
+				TipsDialog dialogTips = new TipsDialog(mContext, getString(R.string.login_error_tips) + ": " + msg, getString(R.string.ok));
 				dialogTips.show();
 			}
 		});
