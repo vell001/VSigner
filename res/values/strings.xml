@@ -101,7 +101,7 @@
     <string name="default_number">12138</string>
     <string name="default_text">管理员很懒，啥都没填写</string>
     
-    <string name="manager_name_format">管理员: %1$s [%2$s]</string>
+    <string name="user_name_format">%1$s [%2$s]</string>
     
     <string name="is_active">签到中</string>
     <string name="whether_close_sign_format">是否关闭《%1$s》签到</string>

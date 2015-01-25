@@ -5,7 +5,9 @@ import java.util.List;
 import vell.bibi.vsigner.model.Channel;
 import vell.bibi.vsigner.util.StrUtil;
 import vell.bibi.vsigner.view.TipsDialog;
+import vell.bibi.vsigner.view.OwnChannelFragment.OwnChannelBroadcastRecevier;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -42,7 +44,7 @@ public class CreateOwnChannelActivity extends BaseActivity implements OnFocusCha
 
 	@Override
 	public void initData() {
-		mManagerNameTextView.setText(String.format(getString(R.string.manager_name_format), 
+		mManagerNameTextView.setText(String.format(getString(R.string.user_name_format), 
 				mCurrentUser.getRealname(), 
 				mCurrentUser.getUsername()));
 	}
@@ -135,5 +137,11 @@ public class CreateOwnChannelActivity extends BaseActivity implements OnFocusCha
 	
 	public void btn_cancel_onclick(View v) {
 		finish();
+	}
+	
+	@Override
+	public void finish() {
+		super.finish();
+		sendBroadcast(new Intent(OwnChannelBroadcastRecevier.ACTION));
 	}
 }

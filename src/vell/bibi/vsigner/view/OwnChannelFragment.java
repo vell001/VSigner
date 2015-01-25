@@ -121,7 +121,7 @@ public class OwnChannelFragment extends BaseFragment{
 				@Override
 				protected void convert(BaseAdapterHelper helper, Channel channel) {
 					helper.setText(R.id.tv_channel_name, channel.getName())
-						.setText(R.id.tv_manager_name, String.format(getString(R.string.manager_name_format), 
+						.setText(R.id.tv_manager_name, String.format(getString(R.string.user_name_format), 
 								channel.getManager().getRealname(),
 								channel.getManager().getUsername()))
 						.setText(R.id.tv_channel_info, channel.getInfo())

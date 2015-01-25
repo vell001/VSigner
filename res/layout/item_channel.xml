@@ -29,7 +29,7 @@
                 android:id="@+id/tv_manager_name"
                 style="@style/Smile.TextView._Gray"
                 android:layout_width="wrap_content"
-                android:text="@string/manager_name_format"
+                android:text="@string/user_name_format"
                 android:textSize="12sp" />
         </LinearLayout>
 

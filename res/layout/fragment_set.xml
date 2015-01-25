@@ -24,7 +24,7 @@
             android:text="@string/mian_tab_set" />
     </LinearLayout>
 
-    <RelativeLayout
+<!--     <RelativeLayout
         android:id="@+id/layout_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/base_line_width_2"
         android:background="@drawable/base_horizontal_line" >
-    </View>
+    </View> -->
 
     <View
         android:layout_width="match_parent"

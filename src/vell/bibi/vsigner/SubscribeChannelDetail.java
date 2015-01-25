@@ -70,7 +70,7 @@ public class SubscribeChannelDetail extends BaseActivity {
 	private void updateView(Channel channel) {
 		mChannelNameTextView.setText(channel.getName());
 		mChannelInfoTextView.setText(channel.getInfo());
-		mManagerNameTextView.setText(String.format(getString(R.string.manager_name_format), 
+		mManagerNameTextView.setText(String.format(getString(R.string.user_name_format), 
 				channel.getManager().getRealname(), 
 				channel.getManager().getUsername()));
 		

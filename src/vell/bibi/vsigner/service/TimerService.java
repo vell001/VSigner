@@ -52,9 +52,9 @@ public class TimerService extends BaseService {
 			mTimerTask = new TimerTask() {
 				@Override
 				public void run() { // 定时向服务器刷新数据
-					Log.i("messageService", "run");
+					Log.i("TimerService", "run");
 					checkNotSignChannelCount();
-					checkNewSignerCount();
+//					checkNewSignerCount();
 				}
 			};
 			
@@ -106,7 +106,7 @@ public class TimerService extends BaseService {
 	/**
 	 * 检查新签到用户
 	 */
-	private void checkNewSignerCount() {
+/*	private void checkNewSignerCount() {
 		AsyncCustomEndpoints ace = new AsyncCustomEndpoints();
 		try {
 			ace.callEndpoint(mContext, "checkNewSignerCount",new JSONObject("{userObjectId:" + mCurrentUser.getObjectId() + "}"), new CloudCodeListener() {
@@ -127,7 +127,7 @@ public class TimerService extends BaseService {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	private void showNotSignChannelCountNotify(int count) {
 		showNotify(getString(R.string.new_sign_channel_tips), String.format(getString(R.string.new_sign_channel_notify_format), count), MainActivity.class);

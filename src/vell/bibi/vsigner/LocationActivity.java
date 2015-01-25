@@ -7,13 +7,13 @@ import vell.bibi.vsigner.config.Constants;
 import vell.bibi.vsigner.model.Channel;
 import vell.bibi.vsigner.model.ChannelSigner;
 import vell.bibi.vsigner.util.StrUtil;
+import vell.bibi.vsigner.view.MessageFragment.MessageBroadcastRecevier;
 import vell.bibi.vsigner.view.TipsDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
-
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.datatype.BmobGeoPoint;
@@ -220,6 +220,12 @@ public class LocationActivity extends BaseActivity{
 				new TipsDialog(mContext, getString(R.string.save_error) + ": " + msg, getString(R.string.ok)).show();
 			}
 		});
+	}
+	
+	@Override
+	public void finish() {
+		super.finish();
+		sendBroadcast(new Intent(MessageBroadcastRecevier.ACTION));
 	}
 }
 
