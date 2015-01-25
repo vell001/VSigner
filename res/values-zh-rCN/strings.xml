@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">到</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="username">用户名</string>
+    <string name="username_hint">用户名不少于6位</string>
+    <string name="realname">姓名</string>
+    <string name="realname_hint">请输入真实姓名</string>
+    <string name="password">密码</string>
+    <string name="password_hint">密码不少于6位</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="confirm_password_hint">请确认密码</string>
+    <string name="confirm_password_error">两次密码输入不一致</string>
+    <string name="email">常用邮箱</string>
+    <string name="email_hint">用于密码找回</string>
+    <string name="email_format_error">邮箱格式不正确</string>
+    <string name="phone">联系电话</string>
+    <string name="phone_hint">请输入常用电话</string>
+    <string name="phone_format_error">电话格式不正确</string>
+    <string name="necessary">*</string>
+    <string name="necessary_notice">*表示必须填写</string>
+    
+    <string name="school">学校</string>
+    <string name="school_hint">你的学校名</string>
+    <string name="major">专业</string>
+    <string name="major_hint">你的所在专业名称</string>
+    <string name="student_id">学号</string>
+    <string name="student_id_hint">你的学号</string>
+    
+    <string name="register">注册</string>
+    
+    <string name="logo">logo</string>
+    
+    <string name="welcome_register">欢迎注册</string>
+    
+    <string name="phone_imsi">你的IMSI</string>
+    
+    <string name="register_notice">提醒：\n\t\t1.本软件是实名制签到，请如实填写信息，以免造成不必要的误会\n \t\t2.软件会自动绑定你的IMSI(手机卡识别码)，请使用自己的手机注册\n \t\t3.电话信息用于联系签到，请如实填写</string>
+    
+    <string name="add_avator">add_avator</string>
+    
+    <string name="tips">提示</string>
+    <string name="default_tips_title">提示</string>
+    
+    <string name="cannot_get_phone_imsi_tips">无法读取IMSI(手机卡识别码)，请确认你的手机卡正确插入！</string>
+    <string name="server_query_tips">连接服务器中，请耐心等待</string>
+    <string name="server_query_error_tips">服务器查找出错</string>
+    <string name="server_update_error_tips">服务器更新出错</string>
+    <string name="server_update_success_tips">服务器更新成功</string>
+    <string name="exist">退出</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="account">账号</string>
+    <string name="login">登录</string>
+    <string name="login_error_tips">登录出错</string>
+    <string name="forgot_password_tip">忘记密码？</string>
+    <string name="get_password_jump">找回密码></string>
+
+    <string name="register_info_not_complete">注册信息不完整</string>
+    <string name="register_error">注册出错</string>
+    <string name="register_success">注册成功</string>
+    <string name="user_info_update_success">用户信息更新成功</string>
+    <string name="user_info_update_error">用户信息更新失败</string>
+    <string name="main_tab_message">签到通知</string>
+    <string name="main_tab_own_channel">你的频道</string>
+    <string name="main_tab_subscribed_channel">订阅频道</string>
+    <string name="mian_tab_set">设置</string>
+    <string name="set_myinfo">个人信息</string>
+    <string name="set_notify">消息提醒</string>
+    <string name="set_voice">声音提醒</string>
+    <string name="set_vibrate">震动提醒</string>
+    <string name="logout">注销登录</string>
+    
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="pullup_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="loading">正在加载</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+    
+    <string name="create_new_channel">新频道</string>  
+    <string name="manager">管理员</string>  
+    <string name="channel_name">频道名</string>  
+    <string name="channel_name_hint">请输入唯一的频道名</string>  
+    <string name="channel_info">描述信息</string>  
+    <string name="channel_info_hint">请输入这个频道的描述信息</string>
+    <string name="create_new_channel_notice">提醒：\n\t\t1.频道名称不能重复\n \t\t2.请认真填写频道描述信息</string>
+    <string name="create">创建</string>
+    <string name="create_error">创建出错</string>
+    <string name="create_success">创建成功</string>
+    <string name="save_error">创建出错</string>
+    <string name="save_success">创建成功</string>
+    <string name="request_server">正在请求服务器</string>
+    <string name="channel_exist">频道已存在，请输入唯一的频道名</string>
+    <string name="default_number">12138</string>
+    <string name="default_text">管理员很懒，啥都没填写</string>
+    
+    <string name="user_name_format">%1$s [%2$s]</string>
+    
+    <string name="is_active">签到中</string>
+    <string name="whether_close_sign_format">是否关闭《%1$s》签到</string>
+    <string name="whether_open_sign_format">是否开启《%1$s》签到</string>
+    
+    <string name="channel_detail">频道详情</string>
+    <string name="open_channel">开启签到</string>
+    <string name="close_channel">正在签到(点击关闭)</string>
+    <string name="show_signer">查看签到列表</string>
+    <string name="delete_channel">删除频道</string>
+    <string name="param_error">参数错误</string>
+    <string name="confirm_delete">确定要删除？</string>
+    
+    <string name="location_error">定位错误</string>
+    <string name="locating">定位中</string>
+    <string name="latitude">维度</string>
+    <string name="lontitude">经度</string>
+    <string name="address">地址</string>
+    <string name="sign">签到</string>
+    <string name="refresh_location">刷新地址</string>
+    <string name="refresh_time_format">更新时间: %1$s</string>
+    <string name="sign_success">签到成功</string>
+    <string name="already_signed">已经签到过了，不用重复签到</string>
+    <string name="channel_is_not_active">频道暂时没有开始签到</string>
+    <string name="search_hint">搜索</string>
+    <string name="subscribe_channel">订阅频道</string>
+    <string name="already_subscribed">已订阅(点击取消订阅)</string>
+    <string name="subscribe_success">订阅成功</string>
+    <string name="unsubscribe_success">成功取消订阅</string>
+
+    <string name="signed_user">已签到用户</string>
+    <string name="new_sign_channel_tips">新签到提醒</string>
+    <string name="new_sign_channel_notify_format">你还有%1$s个未签到频道</string>
+</resources>

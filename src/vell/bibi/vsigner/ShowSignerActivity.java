@@ -81,7 +81,6 @@ public class ShowSignerActivity extends BaseActivity {
 	
 	public void refreshData() {
 		BmobQuery<ChannelSigner> channelQuery = new BmobQuery<ChannelSigner>();
-		channelQuery.addWhereEqualTo(ChannelSigner.SIGNER_KEY, mCurrentUser.getObjectId());
 		channelQuery.addWhereEqualTo(ChannelSigner.CHANNEL_KEY, mChannel.getObjectId());
 		channelQuery.addWhereGreaterThanOrEqualTo(ChannelSigner.SIGN_DATE_KEY, mChannel.getStartSignDate());
 		channelQuery.include(String.format("%1$s,%2$s", 
