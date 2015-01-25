@@ -80,9 +80,9 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".service.MessageService" >
+        <service android:name=".service.TimerService" >
         </service>
-
+        
         <activity android:name="CreateOwnChannelActivity" >
         </activity>
         <activity android:name="ChannelDetailActivity" >

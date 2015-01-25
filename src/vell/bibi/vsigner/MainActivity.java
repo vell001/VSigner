@@ -1,6 +1,7 @@
 package vell.bibi.vsigner;
 
-import vell.bibi.vsigner.service.MessageService;
+import vell.bibi.vsigner.config.Conf;
+import vell.bibi.vsigner.service.TimerService;
 import vell.bibi.vsigner.view.MessageFragment;
 import vell.bibi.vsigner.view.OwnChannelFragment;
 import vell.bibi.vsigner.view.SetFragment;
@@ -26,34 +27,17 @@ public class MainActivity extends BaseActivity {
 	private SubscribedChannelFragment mSubscribedChannelFragment;
 	private SetFragment mSetFragment;
 	private Button[] mTabs;
+	
 	private int index;
 	private int currentTabIndex;
 	
-	ImageView iv_message_tips,iv_own_channel_tips,iv_subscribed_channel_tips;//消息提示
+	public ImageView iv_message_tips,iv_own_channel_tips,iv_subscribed_channel_tips;//消息提示
 
 	@Override
 	public void setContentView() {
 		Log.i(TAG, "MainActivity");
 		setContentView(R.layout.activity_main);
 		Log.i(TAG, mCurrentUser.getUsername());
-		
-		/*BmobQuery<Channel> channelQuery = new BmobQuery<Channel>();
-//		channelQuery.include("subscribers");
-		// 正确方法，将多对多关联关系当做数组
-		channelQuery.addWhereContains("subscribers", mCurrentUser.getObjectId());
-		// 尝试过的错误方法之一，此方法只用于一对多或者多对一问题的查询方法
-//		channelQuery.addWhereRelatedTo("subscribers", new BmobPointer(mCurrentUser)); 
-		channelQuery.findObjects(mContext, new FindListener<Channel>() {
-			@Override
-			public void onSuccess(List<Channel> channels) {
-				for (Channel channel : channels) {
-					Log.i(TAG, channel.getName());
-				}
-			}
-			@Override
-			public void onError(int arg0, String arg1) {
-			}
-		});*/
 	}
 
 	@Override
@@ -98,7 +82,9 @@ public class MainActivity extends BaseActivity {
 			.commit();
 		
 		// 启动MessageService
-		startService(new Intent(mContext, MessageService.class));
+		startService(new Intent(mContext, TimerService.class));
+		// 读取配置信息
+		Conf.load(mContext);
 	}
 
 	
@@ -110,12 +96,15 @@ public class MainActivity extends BaseActivity {
 		switch (view.getId()) {
 		case R.id.btn_message:
 			index = 0;
+			iv_message_tips.setVisibility(View.INVISIBLE);
 			break;
 		case R.id.btn_own_channel:
 			index = 1;
+			iv_own_channel_tips.setVisibility(View.INVISIBLE);
 			break;
 		case R.id.btn_subscribed_channel:
 			index = 2;
+			iv_subscribed_channel_tips.setVisibility(View.INVISIBLE);
 			break;
 		case R.id.btn_set:
 			index = 3;

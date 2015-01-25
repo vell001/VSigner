@@ -7,6 +7,7 @@ import java.util.List;
 import vell.bibi.vsigner.config.Constants;
 import vell.bibi.vsigner.model.Channel;
 import vell.bibi.vsigner.model.ChannelSubscriber;
+import vell.bibi.vsigner.view.SubscribedChannelFragment.SubscribedChannelBroadcastRecevier;
 import vell.bibi.vsigner.view.TipsDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -153,5 +154,11 @@ public class SubscribeChannelDetail extends BaseActivity {
 	
 	public void btn_cancel_onclick(View v) {
 		finish();
+	}
+	
+	@Override
+	public void finish() {
+		super.finish();
+		sendBroadcast(new Intent(SubscribedChannelBroadcastRecevier.ACTION));
 	}
 }

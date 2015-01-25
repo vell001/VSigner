@@ -6,6 +6,7 @@ import cn.bmob.v3.datatype.BmobGeoPoint;
 
 public class ChannelSigner extends BmobObject {
 	private static final long serialVersionUID = -6217101121855641519L;
+	public static final String TABLE_NAME= "ChannelSigner";
 	public static final String SIGN_DATE_KEY= "signDate";
 	public static final String SIGNER_KEY= "signer";
 	public static final String CHANNEL_KEY= "channel";

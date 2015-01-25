@@ -77,8 +77,8 @@ public class SearchChannelActivity extends BaseActivity {
 								channel.getManager().getRealname(),
 								channel.getManager().getUsername()))
 						.setText(R.id.tv_channel_info, channel.getInfo())
-						.setText(R.id.tv_phone, channel.getManager().getPhoneNumber())
-						.setText(R.id.tv_time, channel.getUpdatedAt());
+						.setText(R.id.tv_channel_manager_phone, channel.getManager().getPhoneNumber())
+						.setText(R.id.tv_channel_updated_time, channel.getUpdatedAt());
 					if(channel.isActive()) { // 正在签到
 						helper.setBackgroundColor(R.id.ll_channel_item, getResources().getColor(R.color.channel_is_active_bg))
 							.setVisible(R.id.tv_is_active, true);

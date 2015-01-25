@@ -44,5 +44,6 @@
     
     <color name="channel_is_active_bg">#FFFFE0</color>
     <color name="channel_not_active_bg">#F0FFFF</color>
+    <color name="channel_signed_bg">#FFFAF0</color>
     
 </resources>

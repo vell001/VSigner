@@ -7,6 +7,7 @@ import cn.bmob.v3.datatype.BmobDate;
 
 public class Channel extends BmobObject {
 	private static final long serialVersionUID = 700371249133583521L;
+	public final static String TABLE_NAME = "Channel";
 
 	public final static String NAME_KEY = "name";
 	public final static String MANAGER_KEY = "manager";
@@ -17,8 +18,15 @@ public class Channel extends BmobObject {
 	private String info;
 	private User manager; // 频道创建者
 	private boolean isActive = false; // 是否真正进行签到
+	private int signCount = 0; // 当前签到人数
 	private BmobDate startSignDate;
 	
+	public int getSignCount() {
+		return signCount;
+	}
+	public void setSignCount(int signCount) {
+		this.signCount = signCount;
+	}
 	public BmobDate getStartSignDate() {
 		return startSignDate;
 	}
@@ -37,6 +45,8 @@ public class Channel extends BmobObject {
 	public void setActive(boolean isActive) {
 		if(isActive) { // 设置开始签到时间
 			setStartSignDate(new BmobDate(new Date(System.currentTimeMillis()))); 
+		} else {
+			signCount = 0;
 		}
 		this.isActive = isActive;
 	}

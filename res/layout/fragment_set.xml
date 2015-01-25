@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/theme_bg_color"
     android:orientation="vertical" >
-    
+
     <LinearLayout
         android:id="@+id/top_bar_message"
         android:layout_width="match_parent"
@@ -16,12 +16,12 @@
 
         <TextView
             android:id="@+id/textView1"
+            style="@style/TopBarText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:text="@string/mian_tab_set"
-            style="@style/TopBarText"/>
+            android:gravity="center"
+            android:text="@string/mian_tab_set" />
     </LinearLayout>
 
     <RelativeLayout
@@ -95,7 +95,6 @@
             android:background="@drawable/off"
             android:visibility="invisible"
             tools:ignore="ContentDescription" />
-
     </RelativeLayout>
 
     <View
@@ -139,7 +138,6 @@
             android:background="@drawable/off"
             android:visibility="invisible"
             tools:ignore="ContentDescription" />
-
     </RelativeLayout>
 
     <View
@@ -184,7 +182,6 @@
             android:background="@drawable/off"
             android:visibility="invisible"
             tools:ignore="ContentDescription" />
-
     </RelativeLayout>
 
     <View

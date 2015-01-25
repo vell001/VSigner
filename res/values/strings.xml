@@ -101,7 +101,7 @@
     <string name="default_number">12138</string>
     <string name="default_text">管理员很懒，啥都没填写</string>
     
-    <string name="manager_name_format">%1$s [%2$s]</string>
+    <string name="manager_name_format">管理员: %1$s [%2$s]</string>
     
     <string name="is_active">签到中</string>
     <string name="whether_close_sign_format">是否关闭《%1$s》签到</string>
@@ -131,4 +131,8 @@
     <string name="already_subscribed">已订阅(点击取消订阅)</string>
     <string name="subscribe_success">订阅成功</string>
     <string name="unsubscribe_success">成功取消订阅</string>
+
+    <string name="signed_user">已签到用户</string>
+    <string name="new_sign_channel_tips">新签到提醒</string>
+    <string name="new_sign_channel_notify_format">你还有%1$s个未签到频道</string>
 </resources>

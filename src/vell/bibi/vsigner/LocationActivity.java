@@ -48,7 +48,7 @@ public class LocationActivity extends BaseActivity{
 	public void initViews() {
 		mLatitudeTextView = (TextView) findViewById(R.id.tv_latitude);
 		mLongtitudeTextView = (TextView) findViewById(R.id.tv_longtitude);
-		mAddressTextView = (TextView) findViewById(R.id.tv_address);
+		mAddressTextView = (TextView) findViewById(R.id.tv_sign_address);
 		mRefreshTextView = (TextView) findViewById(R.id.tv_refresh_time);
 		mChannelNameTextView = (TextView) findViewById(R.id.tv_channel_name);
 	}
@@ -73,7 +73,6 @@ public class LocationActivity extends BaseActivity{
 			ShowToast(getString(R.string.param_error));
 			finish();
 		}
-		
 		if(!mChannel.isActive()) {
 			TipsDialog tipsDialog = new TipsDialog(mContext, getString(R.string.channel_is_not_active), getString(R.string.ok));
 			tipsDialog.SetOnDismissListener(new OnDismissListener() {

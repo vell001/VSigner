@@ -12,7 +12,10 @@ import vell.bibi.vsigner.model.Channel;
 import vell.bibi.vsigner.model.ChannelSubscriber;
 import vell.bibi.vsigner.view.pullable.PullToRefreshLayout;
 import vell.bibi.vsigner.view.pullable.PullToRefreshLayout.OnRefreshListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -90,8 +93,8 @@ public class SubscribedChannelFragment extends BaseFragment{
 								channel.getManager().getRealname(),
 								channel.getManager().getUsername()))
 						.setText(R.id.tv_channel_info, channel.getInfo())
-						.setText(R.id.tv_phone, channel.getManager().getPhoneNumber())
-						.setText(R.id.tv_time, channel.getUpdatedAt());
+						.setText(R.id.tv_channel_manager_phone, channel.getManager().getPhoneNumber())
+						.setText(R.id.tv_channel_updated_time, channel.getUpdatedAt());
 					if(channel.isActive()) { // 正在签到
 						helper.setBackgroundColor(R.id.ll_channel_item, getResources().getColor(R.color.channel_is_active_bg))
 							.setVisible(R.id.tv_is_active, true);
@@ -105,6 +108,7 @@ public class SubscribedChannelFragment extends BaseFragment{
 		}
 		
 		refreshData();
+		mBaseActivity.registerReceiver(new SubscribedChannelBroadcastRecevier(), new IntentFilter(SubscribedChannelBroadcastRecevier.ACTION));
 	}
 	
 	public void refreshData() {
@@ -130,5 +134,19 @@ public class SubscribedChannelFragment extends BaseFragment{
 				mPullToRefreshLayout.refreshFinish(PullToRefreshLayout.FAIL);
 			}
 		});
+	}
+	
+	/**
+	 * 消息接收器
+	 * @author VellBibi
+	 *
+	 * @date Jan 23, 2015
+	 */
+	public class SubscribedChannelBroadcastRecevier extends BroadcastReceiver {
+		public static final String ACTION = "vell.bibi.vsigner.intent.action.subcribedChannelChanged";
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			refreshData();
+		}
 	}
 }

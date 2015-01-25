@@ -8,6 +8,7 @@ public class ChannelSubscriber extends BmobObject {
 	public static final String CHANNEL_KEY = "channel";
 	public static final String SUBSCRIBER_KEY = "subscriber";
 	public static final String SUBSCRIBE_DATE_KEY = "subscribeDate";
+	public static final String TABLE_NAME= "ChannelSubscriber";
 	
 	private Channel channel;
 	private User subscriber;

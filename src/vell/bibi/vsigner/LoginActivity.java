@@ -24,7 +24,7 @@ public class LoginActivity extends BaseActivity {
 	@Override
 	public void initViews() {
 		String username = this.getIntent().getStringExtra(Constants.USERNAME_EXTRA);
-		mUsernameTextView = (TextView) findViewById(R.id.tv_username);
+		mUsernameTextView = (TextView) findViewById(R.id.tv_signer_username);
 		mUsernameTextView.setText(username);
 		
 		mPasswordEditText = (EditText) findViewById(R.id.et_password);

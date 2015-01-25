@@ -2,8 +2,12 @@ package vell.bibi.vsigner;
 
 import java.io.Serializable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import vell.bibi.vsigner.config.Constants;
 import vell.bibi.vsigner.model.Channel;
+import vell.bibi.vsigner.view.OwnChannelFragment.OwnChannelBroadcastRecevier;
 import vell.bibi.vsigner.view.TipsDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -11,7 +15,8 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import cn.bmob.v3.listener.DeleteListener;
+import cn.bmob.v3.AsyncCustomEndpoints;
+import cn.bmob.v3.listener.CloudCodeListener;
 import cn.bmob.v3.listener.UpdateListener;
 
 public class OwnChannelDetailActivity extends BaseActivity{
@@ -93,20 +98,24 @@ public class OwnChannelDetailActivity extends BaseActivity{
 			@Override
 			public void onClick(DialogInterface arg0, int arg1) { // 确认删除
 				showProgressDialog(getString(R.string.server_query_tips));
-				mChannel.delete(mContext, new DeleteListener() {
-					@Override
-					public void onSuccess() {
-						hideProgressDialog();
-						ShowToast(getString(R.string.server_update_success_tips));
-						finish();
-					}
-					
-					@Override
-					public void onFailure(int arg0, String msg) {
-						hideProgressDialog();
-						ShowToast(getString(R.string.server_update_error_tips) + ": " + msg);
-					}
-				});
+				AsyncCustomEndpoints ace = new AsyncCustomEndpoints();
+				try {
+					ace.callEndpoint(mContext, "deleteChannel",new JSONObject("{channelObjectId:" + mChannel.getObjectId() + "}"), new CloudCodeListener() {
+					    @Override
+					    public void onSuccess(Object object) {
+					    	hideProgressDialog();
+							ShowToast(getString(R.string.server_update_success_tips));
+							finish();
+					    }
+					    @Override
+					    public void onFailure(int code, String msg) {
+					    	hideProgressDialog();
+							ShowToast(getString(R.string.server_update_error_tips) + ": " + msg);
+					    }
+					});
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		tipsDialog.show();
@@ -133,5 +142,11 @@ public class OwnChannelDetailActivity extends BaseActivity{
 	
 	public void btn_cancel_onclick(View v) {
 		finish();
+	}
+	
+	@Override
+	public void finish() {
+		super.finish();
+		sendBroadcast(new Intent(OwnChannelBroadcastRecevier.ACTION));
 	}
 }

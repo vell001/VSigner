@@ -2,8 +2,8 @@ package vell.bibi.vsigner.view;
 
 import java.util.List;
 
-import vell.bibi.vsigner.OwnChannelDetailActivity;
 import vell.bibi.vsigner.CreateOwnChannelActivity;
+import vell.bibi.vsigner.OwnChannelDetailActivity;
 import vell.bibi.vsigner.R;
 import vell.bibi.vsigner.adapter.BaseAdapterHelper;
 import vell.bibi.vsigner.adapter.QuickAdapter;
@@ -11,8 +11,11 @@ import vell.bibi.vsigner.config.Constants;
 import vell.bibi.vsigner.model.Channel;
 import vell.bibi.vsigner.view.pullable.PullToRefreshLayout;
 import vell.bibi.vsigner.view.pullable.PullToRefreshLayout.OnRefreshListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -122,8 +125,8 @@ public class OwnChannelFragment extends BaseFragment{
 								channel.getManager().getRealname(),
 								channel.getManager().getUsername()))
 						.setText(R.id.tv_channel_info, channel.getInfo())
-						.setText(R.id.tv_phone, channel.getManager().getPhoneNumber())
-						.setText(R.id.tv_time, channel.getUpdatedAt());
+						.setText(R.id.tv_channel_manager_phone, channel.getManager().getPhoneNumber())
+						.setText(R.id.tv_channel_updated_time, channel.getUpdatedAt());
 					if(channel.isActive()) { // 正在签到
 						helper.setBackgroundColor(R.id.ll_channel_item, getResources().getColor(R.color.channel_is_active_bg))
 							.setVisible(R.id.tv_is_active, true);
@@ -137,6 +140,8 @@ public class OwnChannelFragment extends BaseFragment{
 		}
 		
 		refreshData();
+		
+		mBaseActivity.registerReceiver(new OwnChannelBroadcastRecevier(), new IntentFilter(OwnChannelBroadcastRecevier.ACTION));
 	}
 	
 	public void refreshData() {
@@ -214,4 +219,17 @@ public class OwnChannelFragment extends BaseFragment{
 		startActivity(intent);
 	}
 	
+	/**
+	 * 消息接收器
+	 * @author VellBibi
+	 *
+	 * @date Jan 23, 2015
+	 */
+	public class OwnChannelBroadcastRecevier extends BroadcastReceiver {
+		public static final String ACTION = "vell.bibi.vsigner.intent.action.ownChannelChanged";
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			refreshData();
+		}
+	}
 }

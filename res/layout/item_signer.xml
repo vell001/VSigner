@@ -12,44 +12,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/tv_channel_name"
-                style="@style/Smile.TextView._Black"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/channel_name"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/tv_manager_name"
-                style="@style/Smile.TextView._Gray"
-                android:layout_width="wrap_content"
-                android:text="@string/manager_name_format"
-                android:textSize="12sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_signer_realname"
+            style="@style/Smile.TextView._Black"
+            android:layout_width="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/tv_is_active"
+            android:id="@+id/tv_signer_username"
             style="@style/Smile.TextView._Gray"
             android:layout_width="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
-            android:text="@string/is_active"
-            android:textSize="18sp" />
+            android:text="@string/app_name"
+            android:textSize="18sp" 
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@id/tv_signer_realname"/>
+
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_channel_info"
+        android:id="@+id/tv_sign_address"
         style="@style/Smile.TextView._Gray"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="10dp"
         android:minLines="1"
         android:text="@string/default_text"
         android:textSize="16sp" >
@@ -60,15 +47,15 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/tv_channel_updated_time"
+            android:id="@+id/tv_sign_date"
             style="@style/Smile.TextView._Gray"
-            android:layout_centerVertical="true"
             android:text="@string/default_number"
+            android:layout_centerVertical="true"
             android:textSize="12sp" >
         </TextView>
 
         <TextView
-            android:id="@+id/tv_channel_manager_phone"
+            android:id="@+id/tv_signer_phone"
             style="@style/Smile.TextView._White"
             android:layout_alignParentRight="true"
             android:background="@color/green"
